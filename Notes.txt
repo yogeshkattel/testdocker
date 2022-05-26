@@ -1,0 +1,161 @@
+What is Container?
+	An isolated environment for running an application. It is a way to package application with all the necessary
+	dependencies and configuration.
+	
+	- Layers of image
+	- Mostly linux base image, because small size
+	- application image on top
+
+	Features:-
+		- Allow running multiple apps in isolation
+		- Are lightweight
+		- use os fo the host
+		- start quickly
+		- needs less hardware resources
+
+Difference between Image and Container?
+	-Container is running environment for image
+Where do containers live?
+	Container Repository
+	Private repositories
+	Public repository for docker
+
+How does docker helps?
+	Previously when collaborating with dev's they need to manually install all the dependencies and packages manually. They issues installing those cause of no platform support
+	and they had different processes to install and some packages or tools dint support the current system the dev is working on. SO what docker does is it configures and sets up 
+	the environment inside a image or container which could be run by other dev's or production if they have docker installed no hassle of install dependencies and configurations tools 
+	settings. One command and it is all done. You can easily use different versions of apps, packages in same system.
+
+Problems with old application Deployment method.
+	- Configuration on the server needed
+	- dependency version conflicts
+	- misunderstandings
+	- Textual guide of deployment 
+
+Benefit of containers:
+	- developers and Operations work together to package the application in a container
+	- No environmental configuration needed on server - except Docker RUntime
+	
+What is virtual machine?
+	 An abstraction of an machine (physical hardware)
+	Benefits:-
+		- Isolation
+	Problems:-
+		- Each Vm needs a full-blown os
+		- Slow to start
+		- Resource intensive
+
+Architecture of Docker:
+	client talks to server also known as Docker machine using rest-api. Container is a process. It doesn't contain full os all containers share Kernel(OS) of the host.
+
+What Image contains:-
+	- A cut-down OS
+	- A runtime environment 
+	- application files
+	- Third party libraries
+	- Environment Variables
+
+Image is stored in container.
+
+Dev to Registry  to test/production server.
+
+Docker Cli:
+	- distributions
+		- Alpine
+		- Fedora
+		- red hat
+
+Running ubuntu docker:-
+		- docker run -it ubuntu (it means interactive)
+		
+Package manager:-
+	- apt
+
+Directories:-
+	-bin -includes binary programme
+	-boot -has all boot related files
+	-dev -devices( file required to access devices are stored here )
+	-etc -editable text configuration(configuration)
+	-home -Users are stored
+	-root -home dir of root user
+	-lib -keeping libraries and dependencies
+	-var -variable (stores files which are changed frequently) like log file, application data etc
+	-proc -storing files represent running processes
+
+
+Basic docker commands:-
+	Docker pull package-name:version
+	Docker run Package-Name
+	Docker run -d package_name (runs container in a detached mode)
+	Docker stop id_of_container
+	Docker start id_of_container
+	Docker ps -a(all containers)
+
+Container port vs host port
+	Multiple containers can run on your host machine 
+	Your laptop has only certain ports available
+	Create binding between laptop and the container
+	you can have 2 container in same port but needs to be binned to 2 different port from host machine
+port Binding:-
+	
+	docker run -p PORT:To_Port
+
+Debugging Container:
+	docker logs container_id, Name
+
+
+Naming container:-
+	docker run --name NAME package_name  
+	docker exec -it(interactive terminal) container_id /bin/bash/
+
+Workflow with docker:-
+	Docker-hub
+		commit
+			Git
+				Jenkins(CI[continuous Integration])
+					Create Docker Image
+						Pushed to Private Docker Repository
+							deployment
+
+Docker in software Development
+
+Delete all dockerimages
+	docker rmi -f $(docker images -a -q)
+
+delete all containers
+	docker rm $(docker ps -aq)
+
+Build run and ship docker Node:
+	FROM node:alpine 
+	COPY . /app
+	WORKDIR /app
+	CMD node app.js
+
+
+What is dockerfile?
+	It is a blueprint for creating docker images
+	first:
+		FROM <image>:<linux distributions>
+
+	second:
+		environment:
+			JWT_TOKEN: dfaf
+			DB_NAME: fd 
+
+	third:
+		RUN - executes any linux command
+		RUN mkdir -p home/app
+
+	fourth:
+		COPY . /home/app
+	
+	fifth:
+		CMD ["npm", "start"]
+
+Build image :
+	docker build -t folder .
+
+
+see ENV variables stored inside linux:
+	env
+	

@@ -1,0 +1,33 @@
+version: '3' 
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5439:5432' 
+  auth:
+    image: auth
+    restart: always
+    ports:
+      - '8000:8000'
+    environment:
+      JWT_SECRET_KEY: FDFALFDAKFA 
+      JWT_SECRET_ACTIVATION: fdadfafaffafdfa 
+      EMAIL_HOST_NAME: yogeshkattel66@gmail.com 
+      RESET_PASSWORD_SECRET: FAFDAFDAFAF333378797987 
+      EMAIL_HOST_PASSWORD: qvkikwewsolnkmnb 
+      DB_USER: postgres 
+      DB_PASSWORD: postgres 
+      DB_HOST: db 
+      DB_NAME: postgres 
+      DB_PORT: 5432
+      PORT: 8000
+
+    depends_on:
+      - db
+
+    links:
+      - db

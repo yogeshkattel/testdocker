@@ -1,0 +1,92 @@
+What is Container?
+	An isolated environment for running an application. It is a way to package appliation wiht all the necessary
+	dependencies and configuration.
+	
+	- Layers of image
+	- Mostly linux base image, because small size
+	- application image on top
+
+	Features:-
+		- Allw runnning multiple apps in isolation
+		- Are lightweight
+		- use os fo the host
+		- start quckly
+		- needs less hardware resources
+
+Difference between Image and Container?
+	-Container is running enviroment for image
+Where do containers live?
+	Container Repository
+	Private repositories
+	Public repository for docker
+
+How does docker helps?
+	Previously when colaborating with devs they need to manually install all the dependencies and packages manually. They issues installing thoes cause of no platform support
+	and they had different processes to install and some packages or tools didnt support the current system the dev is working on. SO what docker does is it configures and sets up 
+	the environment inside a image or container which could be run by other devs or procuction if they have docker installed no hassle of install deps and configurating tools 
+	settings. One command and it is all done. You can easily use different versions of apps, packages in same system.
+
+Problems with old application Deployment method.
+	- Configuration on the server needed
+	- dependency version conflicts
+	- misunderstandings
+	- Textual guide of deployment 
+
+Benefis of containers:
+	- developers and Operations work together to package the application in a container
+	- No environmental configuration needed on server - except Docker RUntime
+	
+What is virtual machine?
+	 An abstraction of an machine (phisical hardware)
+	Benefits:-
+		- Isolation
+	Problems:-
+		- Each Vm needs a full-blown os
+		- Slow to start
+		- Resource intensive
+
+Architecture of Docker:
+	client talks to server also known as Docker machine using rest-api. Container is a process. It doesnot contain full os all containers share Kernel(OS) of the host.
+
+What Image conatins:-
+	- A cut-down OS
+	- A runtime environment 
+	- application files
+	- Third party libraries
+	- Environment Variables
+
+Image is stored in container.
+
+Dev to Registry  to test/production server.
+
+Docker Cli:
+	- Distros
+		- Ubuntu 
+		- Debian
+		- Alpine
+		- Fedora
+		- red hat
+
+Running ubuntu docker:-
+		- docker run -it ubuntu (it means interactive)
+		
+Package manager:-
+	- apt
+
+Directories:-
+	-bin -includes binary programms
+	-boot -has all boot related files
+	-dev -devices( file requred to access devices are stored here )
+	-etc -editable text configuration(configuration)
+	-home -Users are stored
+	-root -home dir of root user
+	-lib -keeping libraries and dependencies
+	-var -variable (stores files which are changed frequently) like logfile, application data etc
+	-proc -storing files represent running processes
+
+
+Basic docker commands:-
+	Docker pull package-name:version
+	Docker run Package-Name
+	Docker ps
+		- List running containers
